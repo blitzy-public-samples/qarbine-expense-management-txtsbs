@@ -1,0 +1,66 @@
+{
+  // TypeScript configuration file for the web application
+  // Ensures consistent and error-free TypeScript code across the project
+
+  // Requirement Addressed:
+  // Name: Consistent Development Environment
+  // Location: Technical Specification/5.11 Feature ID: F-011/User Interface Requirements
+  // Description: Ensure a consistent development environment by configuring TypeScript settings to match project standards and requirements.
+
+  // Specify the TypeScript version being used
+  // External Dependency:
+  // Name: typescript
+  // Version: 4.4.3
+  // Purpose: Provides static typing and advanced tooling for JavaScript development
+
+  "compilerOptions": {
+    // Target ECMAScript 6 for compatibility with modern browsers
+    "target": "ES6",
+
+    // Use CommonJS module system for interoperability
+    "module": "commonjs",
+
+    // Enable strict type-checking options
+    "strict": true,
+
+    // Allow default imports from modules with no default export
+    "esModuleInterop": true,
+
+    // Skip type checking of declaration files (*.d.ts)
+    "skipLibCheck": true,
+
+    // Ensure consistent casing in file names
+    "forceConsistentCasingInFileNames": true,
+
+    // Base directory for non-relative module names
+    "baseUrl": "./",
+
+    // Path mapping for module resolution
+    "paths": {
+      // Map '@utils/*' to 'src/web/src/utils/*'
+      "@utils/*": ["src/web/src/utils/*"],
+
+      // Map '@hooks/*' to 'src/web/src/hooks/*'
+      "@hooks/*": ["src/web/src/hooks/*"],
+
+      // Map '@services/*' to 'src/web/src/services/*'
+      "@services/*": ["src/web/src/services/*"],
+
+      // Map '@components/*' to 'src/web/src/components/*'
+      "@components/*": ["src/web/src/components/*"],
+
+      // Map '@pages/*' to 'src/web/src/pages/*'
+      "@pages/*": ["src/web/src/pages/*"]
+    }
+  },
+  // Include all TypeScript and TSX files in the source directory
+  "include": [
+    "src/web/src/**/*"
+  ],
+  // Exclude build directories and dependencies to optimize compilation
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist"
+  ]
+}
