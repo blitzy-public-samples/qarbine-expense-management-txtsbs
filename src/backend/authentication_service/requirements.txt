@@ -1,0 +1,52 @@
+# Dependencies for the Authentication Service
+# Addressing: Secure User Authentication and Role-Based Authorization
+# Location: Technical Specification/5.1 Feature ID: F-001
+
+# Flask==2.0.1
+# Web framework for handling HTTP requests and routing.
+# Enables building the RESTful API for authentication.
+# Relevant Requirements:
+# - TR-F001.1: Implement secure login using unique username and password.
+# - TR-F001.2: Implement multi-factor authentication (MFA).
+# - TR-F001.3: Enable Single Sign-On (SSO) integration with company identity providers.
+Flask==2.0.1
+
+# Flask-JWT-Extended==4.3.1
+# Extension for handling JWT token creation and validation.
+# Facilitates secure token-based authentication mechanisms.
+# Relevant Requirements:
+# - TR-F001.1: Implement secure login using unique username and password.
+# - TR-F001.2: Implement multi-factor authentication (MFA).
+Flask-JWT-Extended==4.3.1
+
+# SQLAlchemy==1.4.25
+# Object-Relational Mapping (ORM) library for database interactions.
+# Used for defining user models and handling database operations.
+# Relevant Requirements:
+# - TR-F001.4: Define role-based access levels for Employees, Managers, Finance Team, and Administrators.
+SQLAlchemy==1.4.25
+
+# bcrypt==3.2.0
+# Password hashing library for secure storage of user passwords.
+# Ensures that passwords are stored securely using hashing algorithms.
+# Relevant Requirements:
+# - TR-F001.1: Implement secure login using unique username and password.
+# - TR-F001.5: Provide password recovery and reset functionality.
+bcrypt==3.2.0
+
+# PyJWT==2.3.0
+# Library for JWT token generation and validation.
+# Supports creation and verification of JSON Web Tokens for authentication.
+# Relevant Requirements:
+# - TR-F001.1: Implement secure login using unique username and password.
+PyJWT==2.3.0
+
+# pytest==6.2.4
+# Testing framework for writing and executing test cases.
+# Allows development of unit tests to ensure code reliability.
+pytest==6.2.4
+
+# Flask-Testing==0.8.1
+# Extension for testing Flask applications.
+# Provides utilities for testing Flask apps, complementing pytest.
+Flask-Testing==0.8.1
