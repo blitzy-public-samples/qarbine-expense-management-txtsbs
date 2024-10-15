@@ -1,0 +1,53 @@
+# Requirements for the main server component of the Global Employee Travel Expense Tracking App.
+# This file lists all the external Python packages required for the main server.
+# Each package is specified with a fixed version to ensure consistency across environments.
+# These dependencies are necessary for the application to function correctly, providing features such as web routing, authentication, database interaction, and more.
+
+# Flask==2.0.1
+# - Web framework for handling HTTP requests and routing.
+# - Facilitates development of the web application core.
+# - Addresses: Secure User Authentication and Role-Based Authorization.
+#   Location: Technical Specification/5.1 Feature ID: F-001
+Flask==2.0.1
+
+# Flask-JWT-Extended==4.3.1
+# - Extension for handling JWT token creation and validation.
+# - Provides JWT support for secure authentication.
+# - Addresses: Secure User Authentication and Role-Based Authorization.
+#   Location: Technical Specification/5.1 Feature ID: F-001
+Flask-JWT-Extended==4.3.1
+
+# SQLAlchemy==1.4.25
+# - ORM for defining database models and handling database operations.
+# - Simplifies database interactions and queries.
+# - Addresses: Scalability and Reliability.
+#   Location: Technical Specification/5.19 Feature ID: F-019
+SQLAlchemy==1.4.25
+
+# bcrypt==3.2.0
+# - Password hashing for secure storage and verification.
+# - Secures user passwords with strong hashing algorithms.
+# - Addresses: Secure User Authentication and Role-Based Authorization.
+#   Location: Technical Specification/5.1 Feature ID: F-001
+bcrypt==3.2.0
+
+# PyJWT==2.3.0
+# - Token generation and validation for authentication.
+# - Handles JWT encoding and decoding.
+# - Addresses: Secure User Authentication and Role-Based Authorization.
+#   Location: Technical Specification/5.1 Feature ID: F-001
+PyJWT==2.3.0
+
+# pytest==6.2.4
+# - Testing framework for writing and running test cases.
+# - Ensures code reliability through automated unit tests.
+# - Contributes to Scalability and Reliability.
+#   Location: Technical Specification/5.19 Feature ID: F-019
+pytest==6.2.4
+
+# Flask-Testing==0.8.1
+# - Utilities for testing Flask applications.
+# - Provides tools for testing Flask-specific functionality.
+# - Contributes to Scalability and Reliability.
+#   Location: Technical Specification/5.19 Feature ID: F-019
+Flask-Testing==0.8.1
