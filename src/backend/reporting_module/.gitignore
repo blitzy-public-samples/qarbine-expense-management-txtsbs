@@ -1,0 +1,61 @@
+# .gitignore for the reporting_module directory
+# Requirement Addressed: Version Control Management
+# Location: Technical Specification/6. System Architecture/6.3 Component Descriptions
+# Purpose: Ensure that unnecessary files are not included in the version control system to maintain a clean and efficient repository.
+
+# Ignore compiled Python files
+# Compiled Python bytecode files should not be tracked
+*.pyc
+
+# Ignore Python cache directories
+# __pycache__/ stores temporary bytecode files
+__pycache__/
+
+# Ignore log files
+# Log files are generated during runtime and are environment-specific
+*.log
+
+# Ignore virtual environment directories
+# venv/ contains environment-specific dependencies
+venv/
+
+# Ignore environment variable files
+# .env files may contain sensitive configuration data
+.env
+
+# Ignore instance-specific directories
+# instance/ may hold local configuration and should not be version-controlled
+instance/
+
+# Ignore local SQLite database files
+# SQLite databases are for local development and testing
+*.sqlite3
+
+# Ignore coverage reports
+# coverage/ contains code coverage results from tests
+coverage/
+
+# Ignore distribution and build directories
+# dist/ and build/ are artifacts of the build process
+dist/
+build/
+
+# Ignore egg-info directories
+# *.egg-info/ contains metadata generated during package installation
+*.egg-info/
+
+# Ignore Node.js modules directory
+# node_modules/ contains external dependencies and can be regenerated
+node_modules/
+
+# Ignore Dockerfile
+# Dockerfile may be excluded if it contains environment-specific configurations
+Dockerfile
+
+# Ignore Python requirements file
+# requirements.txt lists dependencies and may be managed separately
+requirements.txt
+
+# Ignore module-specific README files
+# README.md should be maintained at the project root or documentation directory
+README.md
