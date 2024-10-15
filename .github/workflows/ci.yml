@@ -1,0 +1,185 @@
+# Continuous Integration Workflow for the Global Employee Travel Expense Tracking App
+# Validates the seamless integration of the application with existing systems such as accounting, HR, payroll, tax databases, and currency exchange rate providers to ensure data consistency and functional interoperability.
+# Requirement Addressed: Integration Testing
+# Location: Technical Specification/5.15 Feature ID: F-015
+
+# Trigger the workflow on push or pull request events to the main and develop branches
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    name: Build Backend Docker Images
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        # Uses the official GitHub Action to checkout code (actions/checkout@v3)
+
+      # Step 2: Set up Docker Buildx for multi-platform builds
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+        # Sets up Docker Buildx (docker/setup-buildx-action@v2) for building Docker images
+
+      # Step 3: Log in to Docker Hub or another container registry
+      - name: Log in to Docker Registry
+        uses: docker/login-action@v2
+        # Logs into Docker registry (docker/login-action@v2) using credentials stored in secrets
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Step 4: Build and push Docker images for each backend service using their respective Dockerfiles
+      - name: Build and Push Authentication Service Image
+        uses: docker/build-push-action@v2
+        # Builds and pushes Docker image for Authentication Service (docker/build-push-action@v2)
+        with:
+          context: ./src/backend/authentication_service
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/authentication_service:latest
+
+      - name: Build and Push Policy Engine Image
+        uses: docker/build-push-action@v2
+        # Builds and pushes Docker image for Policy Engine (docker/build-push-action@v2)
+        with:
+          context: ./src/backend/policy_engine
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/policy_engine:latest
+
+      - name: Build and Push Notification Service Image
+        uses: docker/build-push-action@v2
+        # Builds and pushes Docker image for Notification Service (docker/build-push-action@v2)
+        with:
+          context: ./src/backend/notification_service
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/notification_service:latest
+
+      - name: Build and Push Reporting Module Image
+        uses: docker/build-push-action@v2
+        # Builds and pushes Docker image for Reporting Module (docker/build-push-action@v2)
+        with:
+          context: ./src/backend/reporting_module
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/reporting_module:latest
+
+      - name: Build and Push Main Server Image
+        uses: docker/build-push-action@v2
+        # Builds and pushes Docker image for Main Server (docker/build-push-action@v2)
+        with:
+          context: ./src/backend/main_server
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/main_server:latest
+
+  test:
+    name: Run Backend Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        # Uses the official GitHub Action to checkout code (actions/checkout@v3)
+
+      # Step 2: Set up Python environment for running backend tests
+      - name: Set up Python 3.9 Environment
+        uses: actions/setup-python@v2
+        # Sets up Python environment (actions/setup-python@v2) for Python 3.9
+        with:
+          python-version: '3.9'
+
+      # Step 3: Install dependencies and run tests for Authentication Service
+      - name: Test Authentication Service
+        working-directory: ./src/backend/authentication_service
+        run: |
+          pip install -r requirements.txt
+          pytest tests/test_authentication.py
+        # Runs unit tests for Authentication Service to validate integration with external systems
+        # Requirement Addressed: Integration Testing (Technical Specification/5.15 Feature ID: F-015)
+
+      # Step 4: Install dependencies and run tests for Policy Engine
+      - name: Test Policy Engine
+        working-directory: ./src/backend/policy_engine
+        run: |
+          pip install -r requirements.txt
+          pytest tests/test_policy_engine.py
+        # Runs unit tests for Policy Engine to ensure policy compliance and data consistency
+        # Requirement Addressed: Integration Testing (Technical Specification/5.15 Feature ID: F-015)
+
+      # Step 5: Install dependencies and run tests for Notification Service
+      - name: Test Notification Service
+        working-directory: ./src/backend/notification_service
+        run: |
+          pip install -r requirements.txt
+          pytest tests/test_notification.py
+        # Runs unit tests for Notification Service to validate notification delivery
+        # Requirement Addressed: Integration Testing (Technical Specification/5.15 Feature ID: F-015)
+
+      # Step 6: Install dependencies and run tests for Reporting Module
+      - name: Test Reporting Module
+        working-directory: ./src/backend/reporting_module
+        run: |
+          pip install -r requirements.txt
+          pytest tests/test_reporting.py
+        # Runs unit tests for Reporting Module to ensure accurate reporting and analytics
+        # Requirement Addressed: Integration Testing (Technical Specification/5.15 Feature ID: F-015)
+
+      # Step 7: Install dependencies and run tests for Main Server
+      - name: Test Main Server
+        working-directory: ./src/backend/main_server
+        run: |
+          pip install -r requirements.txt
+          pytest tests/test_server.py
+        # Runs unit tests for Main Server to verify core functionalities and integrations
+        # Requirement Addressed: Integration Testing (Technical Specification/5.15 Feature ID: F-015)
+
+  lint:
+    name: Lint Codebase
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        # Uses the official GitHub Action to checkout code (actions/checkout@v3)
+
+      # Step 2: Set up Node.js environment for JavaScript/TypeScript linting
+      - name: Set up Node.js Environment
+        uses: actions/setup-node@v2
+        # Sets up Node.js environment (actions/setup-node@v2) for linting
+        with:
+          node-version: '16'
+
+      # Step 3: Install linting tools for JavaScript/TypeScript
+      - name: Install JavaScript/TypeScript Linting Tools
+        run: |
+          npm install -g eslint prettier
+        # Installs ESLint and Prettier globally for code quality checks
+
+      # Step 4: Run linters on JavaScript/TypeScript code
+      - name: Lint JavaScript/TypeScript Code
+        working-directory: ./src/web
+        run: |
+          npm install
+          npx eslint src/ --ext .js,.jsx,.ts,.tsx
+          npx prettier --check src/
+        # Lints the web application's code to ensure code quality and style consistency
+
+      # Step 5: Set up Python environment for Python linting
+      - name: Set up Python 3.9 Environment
+        uses: actions/setup-python@v2
+        # Sets up Python environment (actions/setup-python@v2) for Python 3.9
+
+      # Step 6: Install linting tools for Python
+      - name: Install Python Linting Tools
+        run: |
+          pip install flake8 black
+        # Installs Flake8 and Black for code quality checks
+
+      # Step 7: Run linters on Python code
+      - name: Lint Python Code
+        run: |
+          flake8 src/backend
+          black --check src/backend
+        # Lints the backend services' code to maintain code quality and adherence to style guidelines
