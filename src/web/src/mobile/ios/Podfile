@@ -1,0 +1,91 @@
+# Podfile for the iOS version of the Global Employee Travel Expense Tracking App.
+# This file specifies the CocoaPods dependencies required for building and running
+# the iOS application using React Native.
+
+# Requirement Addressed:
+# - Mobile Features (Technical Specification/5.8 Feature ID: F-008)
+#   Description: Enhance the mobile application with support for cross-platform usage,
+#   push notifications, offline capabilities, and secure storage of receipts and travel
+#   documents to facilitate on-the-go expense management.
+
+# Specify the platform and minimum deployment target as per global settings.
+platform :ios, '10.0' # From 'globals' in the JSON specification.
+
+# Uncomment the next line if you're using Swift or would like to use dynamic frameworks.
+# use_frameworks! # Note: Some React Native modules may not support 'use_frameworks!', so it's commented out.
+
+# Internal Dependency:
+# - name: 'AppDelegate'
+#   module: 'src/web/src/mobile/ios/AppDelegate.swift'
+#   purpose: 'To manage the application lifecycle and integrate React Native with iOS-specific configurations.'
+
+target 'GlobalEmployeeTravelExpenseApp' do
+  # Pods for GlobalEmployeeTravelExpenseApp
+
+  # External Dependencies as specified in 'dependencies' from the JSON.
+
+  # React Native Core
+  # External Dependency:
+  # - name: 'React'
+  #   module: 'React'
+  #   version: '0.64.2'
+  #   purpose: 'To integrate the React Native framework for building the mobile application.'
+  pod 'React', :path => '../node_modules/react-native', :subspecs => [
+    'Core',        # Core functionalities of React Native.
+    'CxxBridge'    # Required for bridging C++ code for native modules.
+  ] # Version: 0.64.2
+
+  # React-RCTLinking
+  # External Dependency:
+  # - name: 'React-RCTLinking'
+  #   module: 'React-RCTLinking'
+  #   version: '0.64.2'
+  #   purpose: 'To handle deep linking within the React Native application.'
+  pod 'React-RCTLinking', :path => '../node_modules/react-native/Libraries/LinkingIOS' # Version: 0.64.2
+
+  # React-RCTNetwork
+  # External Dependency:
+  # - name: 'React-RCTNetwork'
+  #   module: 'React-RCTNetwork'
+  #   version: '0.64.2'
+  #   purpose: 'To manage network requests and connectivity within the React Native application.'
+  pod 'React-RCTNetwork', :path => '../node_modules/react-native/Libraries/Network' # Version: 0.64.2
+
+  # React-RCTText
+  # External Dependency:
+  # - name: 'React-RCTText'
+  #   module: 'React-RCTText'
+  #   version: '0.64.2'
+  #   purpose: 'To render and manage text components in the React Native application.'
+  pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text' # Version: 0.64.2
+
+  # Yoga
+  # Required by React Native for layout calculations.
+  pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga' # Included with React Native 0.64.2
+
+  # Third-party dependencies required by React Native.
+  pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec' # Version bundled with React Native 0.64.2
+  pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec' # Version bundled with React Native 0.64.2
+
+  # Post-installation script to configure the iOS project after installing dependencies.
+  # Requirement Addressed:
+  # - Mobile Features (Technical Specification/5.8 Feature ID: F-008)
+  #   Steps:
+  #   1. Ensure all CocoaPods dependencies are installed correctly.
+  #   2. Configure any necessary build settings for the iOS project.
+  #   3. Link native modules required by React Native.
+
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        # Ensure the Swift language version is set to 5.0.
+        config.build_settings['SWIFT_VERSION'] = '5.0' # Configures Swift version as per project requirements.
+        # Embed Swift Standard Libraries to support features like secure storage.
+        config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'YES' # Necessary for Swift dependencies.
+      end
+    end
+
+    # Additional configurations can be added here if required for linking native modules.
+    # As per the JSON specification, linking is handled through the specified pods.
+  end
+end
