@@ -1,0 +1,43 @@
+# .gitignore for src/database directory
+# Ensures that only necessary files are tracked in version control,
+# improving repository cleanliness and security.
+# Requirements Addressed:
+# - Version Control Management
+#   Location: Technical Specification/6.3 Component Descriptions/6.3.3 Data Storage
+#   Description: Ensures that only necessary files are tracked in version control, improving repository cleanliness and security.
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+
+# Ignore node modules directory
+node_modules/
+
+# Ignore build directories
+dist/
+build/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore local SQLite database files
+database.sqlite
+
+# Ignore environment configuration files
+env/
+.env
+.env.local
+.env.*.local
+
+# Ignore coverage reports
+coverage/
+
+# Ignore debug logs from npm and yarn
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
