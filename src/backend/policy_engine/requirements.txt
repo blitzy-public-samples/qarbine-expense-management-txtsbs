@@ -1,0 +1,22 @@
+# Requirements for the Policy Engine component
+# This file specifies the Python dependencies required for the Policy Engine component of the Global Employee Travel Expense Tracking App.
+# It addresses the requirements specified in Technical Specification/5.3 Feature ID: F-003.
+
+# Flask is used to create and manage API routes.
+# Addressing Requirement ID: TR-F003.2 (Perform real-time policy checks during expense submission)
+# Location: Technical Specification/5.3 Feature ID: F-003
+Flask==2.0.1
+
+# Requests is used to integrate with global tax databases to ensure up-to-date tax compliance.
+# Addressing Requirement ID: TR-F003.3 (Integrate with global tax databases to ensure up-to-date tax compliance)
+# Location: Technical Specification/5.3 Feature ID: F-003
+requests==2.26.0
+
+# PyKnow is used to implement rule-based logic for policy compliance checks.
+# Addressing Requirement IDs:
+# - TR-F003.1 (Allow configuration of expense policies based on employee level, department, and travel destination)
+# - TR-F003.5 (Flag expenses that exceed policy limits or require additional approval)
+# Location: Technical Specification/5.3 Feature ID: F-003
+pyknow==1.1.0
+
+# Since 'unittest' is a built-in library in Python, it is not listed here but will be used for testing.
