@@ -1,0 +1,511 @@
+/* Global Styles for the entire application */
+/* Sets global font, color, and margin styles */
+/* Addresses: User Interface Requirements (Feature ID: F-011, Technical Specification/5.11) */
+/* Requirement IDs: TR-F011.3 - Maintain consistent branding and design language across all platforms */
+/*                 TR-F011.5 - Ensure the interface is intuitive and requires minimal training */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* Typography Styles for Headings */
+/* Defines consistent font sizes and weights for headings */
+/* Addresses: User Interface Requirements (Feature ID: F-011) */
+/* Requirement ID: TR-F011.3 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222222;
+  margin-top: 0;
+  font-weight: 600;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.75em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1em; }
+h6 { font-size: 0.875em; }
+
+/* Responsive Layout Container */
+/* Provides consistent padding and alignment */
+/* Addresses: User Interface Requirements (Feature ID: F-011) */
+/* Requirement ID: TR-F011.3 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Button Styles */
+/* Defines appearance and interaction feedback for buttons */
+/* Addresses: User Interface Requirements (Feature ID: F-011) */
+/* Requirement IDs: TR-F011.3, TR-F011.5 */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #0078d4;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #005a9e;
+}
+
+/* Link Styles */
+/* Ensures visibility and consistent hover effects for hyperlinks */
+/* Addresses: User Interface Requirements (Feature ID: F-011) */
+/* Requirement ID: TR-F011.3 */
+.link {
+  color: #0078d4;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus {
+  text-decoration: underline;
+}
+
+/* Header Component Styles */
+/* Applies global styles for the header component */
+/* Ensures consistent typography and layout */
+/* Dependency: Header (src/web/src/components/Header.tsx) */
+header {
+  background-color: #ffffff;
+  padding: 20px 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+header .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #0078d4;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+header nav ul li a {
+  color: #333333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+header nav ul li a:hover,
+header nav ul li a:focus {
+  color: #0078d4;
+}
+
+/* Footer Component Styles */
+/* Maintains consistent branding and layout for the footer */
+/* Dependency: Footer (src/web/src/components/Footer.tsx) */
+footer {
+  background-color: #f5f5f5;
+  padding: 20px 0;
+  border-top: 1px solid #dddddd;
+  text-align: center;
+  color: #666666;
+  font-size: 0.875em;
+}
+
+footer a {
+  color: #0078d4;
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus {
+  text-decoration: underline;
+}
+
+/* Sidebar Component Styles */
+/* Provides styles for the sidebar navigation */
+/* Ensures responsive design and consistent theming */
+/* Dependency: Sidebar (src/web/src/components/Sidebar.tsx) */
+.sidebar {
+  background-color: #ffffff;
+  padding: 20px;
+  border-right: 1px solid #dddddd;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  color: #333333;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  color: #0078d4;
+}
+
+/* Notification Badge Styles */
+/* Defines styles for notification badges */
+/* Ensures visibility and consistency across the application */
+/* Dependency: NotificationBadge (src/web/src/components/NotificationBadge.tsx) */
+.notification-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 0.75em;
+  color: #ffffff;
+  background-color: #e81123;
+  border-radius: 12px;
+}
+
+/* Mobile Menu Styles */
+/* Ensures responsive styles for the mobile menu */
+/* Supports cross-platform navigation */
+/* Dependency: MobileMenu (src/web/src/components/MobileMenu.tsx) */
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+    background-color: #ffffff;
+    padding: 15px;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .mobile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-menu ul li {
+    margin-bottom: 10px;
+  }
+
+  .mobile-menu ul li a {
+    color: #333333;
+    text-decoration: none;
+  }
+
+  .mobile-menu ul li a:hover,
+  .mobile-menu ul li a:focus {
+    color: #0078d4;
+  }
+}
+
+/* Localization Switcher Styles */
+/* Provides styles for the language switcher */
+/* Ensures seamless integration with the application's design */
+/* Dependency: LocalizationSwitcher (src/web/src/components/LocalizationSwitcher.tsx) */
+.localization-switcher {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.localization-switcher select {
+  padding: 5px;
+  font-size: 0.875em;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* Form Styles */
+/* Applies form-specific styles for expense submission */
+/* Ensures usability and consistency */
+/* Dependency: ExpenseForm (src/web/src/components/ExpenseForm.tsx) */
+form.expense-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
+form.expense-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+form.expense-form input,
+form.expense-form select,
+form.expense-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1em;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+form.expense-form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+}
+
+form.expense-form .button-submit {
+  background-color: #0078d4;
+  color: #ffffff;
+  border: none;
+}
+
+form.expense-form .button-submit:hover,
+form.expense-form .button-submit:focus {
+  background-color: #005a9e;
+}
+
+/* Expense List Styles */
+/* Defines list styles for displaying expenses */
+/* Ensures readability and consistent layout */
+/* Dependency: ExpenseList (src/web/src/components/ExpenseList.tsx) */
+.expense-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.expense-list th,
+.expense-list td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+
+.expense-list th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.expense-list tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Expense Item Styles */
+/* Provides styles for individual expense items */
+/* Ensures consistent formatting and interaction */
+/* Dependency: ExpenseItem (src/web/src/components/ExpenseItem.tsx) */
+.expense-item {
+  padding: 15px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.expense-item h4 {
+  margin: 0 0 5px 0;
+}
+
+.expense-item p {
+  margin: 0;
+  color: #666666;
+}
+
+/* Receipt Upload Styles */
+/* Ensures styles for the receipt upload interface */
+/* Supports user interaction and validation feedback */
+/* Dependency: ReceiptUpload (src/web/src/components/ReceiptUpload.tsx) */
+.receipt-upload {
+  border: 2px dashed #0078d4;
+  padding: 20px;
+  text-align: center;
+  color: #0078d4;
+  cursor: pointer;
+}
+
+.receipt-upload:hover,
+.receipt-upload:focus {
+  background-color: #e5f1fb;
+}
+
+.receipt-upload input[type="file"] {
+  display: none;
+}
+
+/* User Profile Styles */
+/* Applies styles for the user profile interface */
+/* Ensures consistent layout and branding */
+/* Dependency: UserProfile (src/web/src/components/UserProfile.tsx) */
+.user-profile {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.user-profile .profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-profile .profile-header img {
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.user-profile .profile-header h2 {
+  margin: 0;
+}
+
+/* Approval List Styles */
+/* Defines styles for the approval list */
+/* Supports manager workflows and interaction */
+/* Dependency: ApprovalList (src/web/src/components/ApprovalList.tsx) */
+.approval-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.approval-list th,
+.approval-list td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+
+.approval-list th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.approval-list tr:hover {
+  background-color: #f1f1f1;
+}
+
+.approval-list .button-approve {
+  background-color: #107c10;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.approval-list .button-reject {
+  background-color: #e81123;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* Analytics Dashboard Styles */
+/* Provides styles for analytics dashboards */
+/* Ensures data visualization is clear and consistent */
+/* Dependency: AnalyticsDashboard (src/web/src/components/AnalyticsDashboard.tsx) */
+.dashboard {
+  padding: 20px;
+}
+
+.dashboard .chart-container {
+  margin-bottom: 30px;
+}
+
+.dashboard .chart-title {
+  font-size: 1.25em;
+  margin-bottom: 10px;
+}
+
+/* Settings Panel Styles */
+/* Applies styles for the settings panel */
+/* Ensures user preferences are displayed consistently */
+/* Dependency: SettingsPanel (src/web/src/components/SettingsPanel.tsx) */
+.settings-panel {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.settings-panel h3 {
+  margin-top: 0;
+}
+
+.settings-panel label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.settings-panel input,
+.settings-panel select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.settings-panel button {
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+/* Policy Compliance Checker Styles */
+/* Ensures styles for compliance checks */
+/* Supports user interaction and feedback */
+/* Dependency: PolicyComplianceChecker (src/web/src/components/PolicyComplianceChecker.tsx) */
+.compliance-message {
+  padding: 15px;
+  border: 1px solid #e81123;
+  background-color: #fde7e9;
+  color: #a80000;
+  margin-bottom: 20px;
+}
+
+.compliance-message h4 {
+  margin-top: 0;
+}
+
+/* Accessibility Features */
+/* Incorporates accessibility features compliant with WCAG 2.1 guidelines */
+/* Addresses: User Interface Requirements (Feature ID: F-011) */
+/* Requirement ID: TR-F011.6 */
+:focus {
+  outline: 2px solid #0078d4;
+  outline-offset: 2px;
+}
+
+/* Media Queries for Responsive Design */
+/* Ensures the interface is responsive and accessible on various devices */
+/* Addresses: User Interface Requirements (Feature ID: F-011) */
+/* Requirement ID: TR-F011.1 - Develop a responsive web application for desktop use */
+@media (max-width: 768px) {
+  .header,
+  .footer,
+  .sidebar,
+  .container {
+    padding: 15px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+}
+```
