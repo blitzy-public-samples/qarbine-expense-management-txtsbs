@@ -1,0 +1,31 @@
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore virtual environment directories
+env/
+venv/
+
+# Ignore environment variable files containing sensitive information
+.env  # Related to TR-F001.4 in Technical Specification/5.1 Feature ID: F-001
+
+# Ignore log files
+*.log
+
+# Ignore temporary files created by editors or the OS
+*.tmp
+*.swp
+.DS_Store
+
+# Ignore Dockerfile to prevent including it in version control
+Dockerfile  # Ensures environment-specific configurations are not committed
+
+# Ignore build and distribution directories
+build/
+dist/
+*.egg-info/
+
+# Ignore sensitive configuration files
+config.py  # Related to TR-F001.4 in Technical Specification/5.1 Feature ID: F-001
+
+# The above patterns ensure that sensitive configuration files and unnecessary artifacts are not committed to version control, addressing security requirements specified in Technical Specification/5.1 Feature ID: F-001.
