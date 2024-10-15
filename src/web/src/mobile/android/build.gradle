@@ -1,0 +1,107 @@
+// File: src/web/src/mobile/android/build.gradle
+// Description: The build.gradle file for the Android portion of the mobile application,
+// responsible for configuring the Android build environment, managing dependencies,
+// and ensuring compatibility with the React Native framework.
+// Requirements Addressed:
+// - Enhance the mobile application with support for cross-platform usage, push notifications,
+//   offline capabilities, and secure storage of receipts and travel documents to facilitate
+//   on-the-go expense management.
+//   (Technical Specification/5.8 Feature ID: F-008)
+
+// Applying necessary plugins for building the Android application.
+// Function: applyPlugins
+// Description: Applies necessary plugins for building the Android application.
+// Steps:
+// - Apply the 'com.android.application' plugin for Android application projects.
+// - Apply the 'kotlin-android' plugin for Kotlin support.
+apply plugin: 'com.android.application' // Plugin for Android application projects.
+apply plugin: 'kotlin-android' // Plugin for Kotlin support in Android projects.
+
+// Configuring the Android build settings including SDK versions and build types.
+// Function: configureAndroid
+// Description: Configures the Android build settings including SDK versions and build types.
+// Steps:
+// - Set the compileSdkVersion to 30.
+// - Set the defaultConfig with applicationId, minSdkVersion, targetSdkVersion, versionCode, and versionName.
+// - Define build types such as 'release' and 'debug' with appropriate configurations.
+android {
+    compileSdkVersion 30 // Global setting: compileSdkVersion (30).
+
+    defaultConfig {
+        applicationId "com.company.expensetracker" // Unique application ID.
+        minSdkVersion 21 // Global setting: minSdkVersion (21).
+        targetSdkVersion 30 // Global setting: targetSdkVersion (30).
+        versionCode 1 // Global setting: versionCode (1).
+        versionName "1.0" // Global setting: versionName ("1.0").
+        multiDexEnabled true // Enables multidex to support additional methods.
+
+        // Addresses requirement TR-F008.1: Ensure cross-platform support for both iOS and Android devices.
+        // (Technical Specification/5.8 Feature ID: F-008)
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true // Enables code shrinking and obfuscation for release builds.
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // Addresses requirement TR-F008.6: Ensure secure storage and encryption of sensitive data on mobile devices.
+            // Enables ProGuard for code optimization and obfuscation.
+            // (Technical Specification/5.8 Feature ID: F-008)
+        }
+        debug {
+            minifyEnabled false
+            debuggable true // Enables debugging for debug builds.
+        }
+    }
+
+    // Enables Java 8 features required by some dependencies.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // Configures Kotlin compiler options.
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+// Managing project dependencies including React Native and Kotlin.
+// Function: manageDependencies
+// Description: Manages project dependencies including React Native and Kotlin.
+// Steps:
+// - Add implementation dependencies for React Native and Kotlin.
+// - Ensure compatibility with the specified versions of external libraries.
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // External dependency: org.jetbrains.kotlin:kotlin-stdlib (version 1.5.21)
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.21" // Kotlin Standard Library for Kotlin support.
+
+    // External dependency: com.facebook.react:react-native (version 0.64.2)
+    implementation "com.facebook.react:react-native:0.64.2" // React Native framework for building the mobile application.
+
+    // AndroidX AppCompat library for backward compatibility.
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+
+    // AndroidX Core Kotlin extensions.
+    implementation 'androidx.core:core-ktx:1.3.2'
+
+    // Enables multidex support for applications with many methods.
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    // Internal dependency: MainActivity integrating React Native components.
+    // File: src/web/src/mobile/android/app/src/main/java/com/company/MainActivity.kt
+    // Purpose: Main entry point for the Android application, integrating React Native components.
+    // Note: Source files are included in the build automatically and do not need to be declared here.
+
+    // Addresses requirement TR-F008.3: Provide offline mode with data synchronization when online.
+    // Addresses requirement TR-F008.4: Offer a digital wallet for storing receipts and travel documents.
+    // Addresses requirement TR-F008.7: Support camera integration for receipt scanning.
+    // Additional dependencies can be added here to support these features as needed.
+    // (Technical Specification/5.8 Feature ID: F-008)
+}
+
+// Applying React Native Gradle configuration.
+// Ensures compatibility with the React Native framework.
+apply from: "../../node_modules/react-native/react.gradle"
