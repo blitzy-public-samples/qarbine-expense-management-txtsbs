@@ -1,0 +1,35 @@
+# Requirements for Notification Service
+# Addressing Feature ID: F-017 - Notification and Alerting System
+# Refer to Technical Specification/5.17 Feature ID: F-017 for detailed requirements.
+
+# Flask==2.0.1
+# - Flask v2.0.1 is the web framework used to handle HTTP requests for the notification service.
+#   Supports RESTful APIs for notifications.
+flask==2.0.1
+
+# Flask-RESTful==0.3.9
+# - Flask-RESTful v0.3.9 provides RESTful API support for the notification service.
+#   Facilitates building APIs for sending and managing notifications.
+flask-restful==0.3.9
+
+# Flask-SQLAlchemy==2.5.1
+# - Flask-SQLAlchemy v2.5.1 integrates SQLAlchemy with Flask for ORM capabilities.
+#   Used for persisting notification data and user preferences.
+#   Supports TR-F017.6: Allow users to configure their notification preferences.
+flask-sqlalchemy==2.5.1
+
+# Flask-Migrate==3.1.0
+# - Flask-Migrate v3.1.0 handles database migrations for the notification service.
+#   Ensures database schema aligns with application models.
+flask-migrate==3.1.0
+
+# PyJWT==2.1.0
+# - PyJWT v2.1.0 handles JSON Web Tokens for secure authentication.
+#   Ensures secure communication and authentication in notifications.
+pyjwt==2.1.0
+
+# Requests==2.26.0
+# - Requests v2.26.0 is used to make HTTP requests to external services like email APIs.
+#   Supports sending notifications through external channels.
+#   Addresses TR-F017.1: Send email and in-app notifications for pending expense approvals.
+requests==2.26.0
