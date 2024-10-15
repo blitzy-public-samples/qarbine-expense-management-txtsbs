@@ -1,0 +1,51 @@
+# Requirements for the Reporting Module
+# Addressing Requirement:
+# Name: Reporting and Analytics
+# Location: Technical Specification/5.6 Feature ID: F-006
+# Description: Provide comprehensive reporting tools and customizable dashboards to offer real-time visibility into travel expenses, supporting budgeting, forecasting, and financial analysis for various user roles.
+
+# External Dependencies:
+
+# Flask is required to create and manage API routes for the reporting module.
+# Version: 2.0.1
+flask==2.0.1  # Provides web framework capabilities for API development.
+
+# Pandas is required for data manipulation and analysis to generate detailed expense reports.
+# Addresses TR-F006.2: Generate detailed expense reports by employee, department, project, or cost center.
+pandas==1.3.4  # Data manipulation and analysis library.
+
+# Plotly is used for interactive data visualization in dashboards.
+# Addresses TR-F006.1: Offer customizable dashboards tailored to different user roles.
+# Addresses TR-F006.3: Perform trend analysis on travel spending.
+plotly==5.3.1  # Interactive graphing library for Python.
+
+# Dash (from Plotly) is used for building web-based dashboards.
+# Addresses TR-F006.1: Offer customizable dashboards tailored to different user roles.
+dash==2.0.0  # Web application framework for building dashboards.
+
+# ReportLab is used for generating PDF reports.
+# Addresses TR-F006.4: Enable export of reports in multiple formats (e.g., PDF, Excel, CSV).
+reportlab==3.6.1  # Library for creating PDFs.
+
+# openpyxl is used for reading and writing Excel files.
+# Addresses TR-F006.4: Enable export of reports in multiple formats (e.g., PDF, Excel, CSV).
+openpyxl==3.0.9  # Read/write Excel files.
+
+# SQLAlchemy is required for database interactions.
+# Addresses TR-F006.2: Generate detailed expense reports by querying the database.
+SQLAlchemy==1.4.25  # Database toolkit and ORM.
+
+# psycopg2-binary is required to connect to the PostgreSQL database.
+# Addresses TR-F006.2: Access expense data from the database.
+psycopg2-binary==2.9.1  # PostgreSQL database adapter.
+
+# Scikit-learn is used for implementing anomaly detection algorithms.
+# Addresses TR-F006.7: Implement anomaly detection for potential fraud or policy violations.
+scikit-learn==0.24.2  # Machine learning library.
+
+# Pytest is used to provide a framework for writing and running tests.
+# Even though 'unittest' is part of Python's standard library, Pytest offers more features.
+pytest==6.2.5  # Python testing framework.
+
+# Ensure that the specified versions are compatible with the rest of the application.
+# Refer to Technical Specification/5.6 Feature ID: F-006 for detailed requirements on Reporting and Analytics features.
