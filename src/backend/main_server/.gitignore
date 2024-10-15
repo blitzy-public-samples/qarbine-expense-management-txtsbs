@@ -1,0 +1,40 @@
+# .gitignore for Main Server Component
+
+# Requirement Addressed:
+# - Data Management (Technical Specification/5.10 Feature ID: F-010)
+#   Ensures secure and efficient management of all data within the application, including
+#   storage, retention, export, and archiving, in compliance with legal and tax requirements.
+
+# Ignore compiled Python files
+# Compiled files are generated at runtime and should not be tracked to maintain data integrity.
+*.pyc
+__pycache__/
+
+# Ignore environment variable files
+# Contains sensitive configuration data that must remain secure and untracked.
+.env
+
+# Ignore instance-specific data
+# Runtime instance data should not be versioned to ensure efficient data management.
+instance/
+
+# Ignore macOS system files
+# System-specific files that are irrelevant to the application codebase.
+.DS_Store
+
+# Ignore log files
+# Logs can contain sensitive information and grow in size; they should not be committed.
+*.log
+
+# Ignore virtual environment directories
+# Virtual environments are local to each development environment and should not be shared.
+venv/
+
+# Ignore build artifacts
+# Build directories contain compiled distributions not needed in version control.
+build/
+dist/
+
+# Ignore test report files
+# Test reports are generated artifacts and can be reproduced; they should remain untracked.
+test-reports/
